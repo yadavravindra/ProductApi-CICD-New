@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductApi.Services;
 using ProductApi.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProductApi.Controllers;
 
@@ -16,6 +17,8 @@ public class ProductController : ControllerBase
     }
      
     [HttpGet]
+
+    [Authorize]
     public async Task<IActionResult> GetAll()
     {
         return Ok(await _service.GetAllAsync());
